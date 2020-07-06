@@ -8,6 +8,8 @@ public interface LanguageService {
 
     List<Language> findAllLanguages();
 
+    List<Language> findLanguagesContainsName(String name);
+
     Language findLanguage(Long langID);
 
     void addLanguage(Language l);

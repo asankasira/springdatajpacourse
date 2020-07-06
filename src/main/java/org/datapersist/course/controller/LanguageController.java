@@ -2,7 +2,6 @@ package org.datapersist.course.controller;
 
 import org.datapersist.course.model.Language;
 import org.datapersist.course.service.LanguageService;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +12,11 @@ public class LanguageController {
 
     private LanguageService languageService;
 
+    @Autowired
+    public void setLanguageService(LanguageService languageService) {
+        this.languageService = languageService;
+    }
+
     @RequestMapping("/lang")
     public List<Language> getAllLanguages(){
        return languageService.findAllLanguages();
@@ -21,6 +25,11 @@ public class LanguageController {
     @RequestMapping("/lang/{id}")
     public Language findLanguage(@PathVariable Long id){
         return languageService.findLanguage(id);
+    }
+
+    @RequestMapping("/lang/filter/{name}")
+    public List<Language> findLanguagesContainsName(@PathVariable String name){
+        return languageService.findLanguagesContainsName(name);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/lang")
@@ -36,10 +45,5 @@ public class LanguageController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/lang/{id}")
     public void deleteLanguage(@PathVariable Long id){
         languageService.deleteLanguage(id);
-    }
-
-    @Autowired
-    public void setLanguageService(LanguageService languageService) {
-        this.languageService = languageService;
     }
 }

@@ -21,6 +21,11 @@ public class LanguageServiceImpl implements LanguageService {
     }
 
     @Override
+    public List<Language> findLanguagesContainsName(String name) {
+        return repository.findLanguageByNameContains(name);
+    }
+
+    @Override
     public Language findLanguage(Long langID) {
         return repository.findById(langID).get();
     }
