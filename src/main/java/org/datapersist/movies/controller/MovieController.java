@@ -3,9 +3,7 @@ package org.datapersist.movies.controller;
 import org.datapersist.movies.model.FilmCategory;
 import org.datapersist.movies.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +20,12 @@ public class MovieController {
     
     @RequestMapping("/filmCategory/{filmId}")
     public List<FilmCategory> getFilmCategories(@PathVariable Long filmId){
-        return movieService.getFilmCategories(filmId);
+        return movieService.getFilmCategoriesFromFilmID(filmId);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/filmCategory")
+    public void getFilmCategories(@RequestBody FilmCategory category){
+        movieService.addFilmCategory(category);
     }
 
 }

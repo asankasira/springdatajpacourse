@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface FilmCategoryRepository extends CrudRepository<FilmCategory, FilmCategoryKey> {
-    List<FilmCategory> findFilmCategoriesByFilm_Id(long filmId);
+    List<FilmCategory> findFilmCategoriesByFilm_FilmID(long filmId);
 }

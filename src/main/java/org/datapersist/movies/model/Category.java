@@ -9,33 +9,21 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "category_id")
-    private long id;
+    private long categoryID;
     private String name;
     @Column(name = "last_update", columnDefinition="TIMESTAMP WITHOUT TIME ZONE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdatedTime;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public long getCategoryID() {
+        return categoryID;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Date getLastUpdatedTime() {
         return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(Date lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
     }
 }

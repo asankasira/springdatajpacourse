@@ -5,5 +5,7 @@ import org.datapersist.movies.model.FilmCategory;
 import java.util.List;
 
 public interface MovieService {
-    List<FilmCategory> getFilmCategories(long filmId);
+    List<FilmCategory> getFilmCategoriesFromFilmID(long filmId);
+
+    void addFilmCategory(FilmCategory category);
 }

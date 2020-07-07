@@ -16,8 +16,12 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<FilmCategory> getFilmCategories(long filmId) {
-        return filmCategoryRepository.findFilmCategoriesByFilm_Id(filmId);
+    public List<FilmCategory> getFilmCategoriesFromFilmID(long filmId) {
+        return filmCategoryRepository.findFilmCategoriesByFilm_FilmID(filmId);
     }
 
+    @Override
+    public void addFilmCategory(FilmCategory category) {
+        filmCategoryRepository.save(category);
+    }
 }

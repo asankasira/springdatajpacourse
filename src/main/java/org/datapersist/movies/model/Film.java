@@ -9,7 +9,7 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "film_id")
-    private long id;
+    private long filmID;
     private String title;
     @Column(name = "language_id")
     private int languageID;
@@ -23,59 +23,31 @@ public class Film {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdatedTime;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public long getFilmID() {
+        return filmID;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public int getLanguageID() {
         return languageID;
-    }
-
-    public void setLanguageID(int languageID) {
-        this.languageID = languageID;
     }
 
     public int getRentalDuration() {
         return rentalDuration;
     }
 
-    public void setRentalDuration(int rentalDuration) {
-        this.rentalDuration = rentalDuration;
-    }
-
     public double getRentalRate() {
         return rentalRate;
-    }
-
-    public void setRentalRate(double rentalRate) {
-        this.rentalRate = rentalRate;
     }
 
     public double getReplacementCost() {
         return replacementCost;
     }
 
-    public void setReplacementCost(double replacementCost) {
-        this.replacementCost = replacementCost;
-    }
-
     public Date getLastUpdatedTime() {
         return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(Date lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
     }
 }
