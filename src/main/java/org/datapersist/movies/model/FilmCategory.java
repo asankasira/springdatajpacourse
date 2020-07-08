@@ -1,6 +1,7 @@
 package org.datapersist.movies.model;
 
 import org.datapersist.movies.model.key.FilmCategoryKey;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class FilmCategory {
 
     @Column(name = "last_update", columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastUpdatedTime;
 
 
