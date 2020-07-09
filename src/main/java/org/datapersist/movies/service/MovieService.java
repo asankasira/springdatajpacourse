@@ -1,5 +1,6 @@
 package org.datapersist.movies.service;
 
+import org.datapersist.movies.model.Category;
 import org.datapersist.movies.model.FilmActor;
 import org.datapersist.movies.model.FilmCategory;
 
@@ -15,4 +16,6 @@ public interface MovieService {
     void addFilmActor(FilmActor actor);
 
     List<FilmActor> getFilmActorsFromFilmIdAndLastInitial(long filmId, String lastInitial);
+
+    void addCategory(Category category);
 }

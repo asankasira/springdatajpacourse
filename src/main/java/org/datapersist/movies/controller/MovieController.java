@@ -1,5 +1,6 @@
 package org.datapersist.movies.controller;
 
+import org.datapersist.movies.model.Category;
 import org.datapersist.movies.model.FilmActor;
 import org.datapersist.movies.model.FilmCategory;
 import org.datapersist.movies.service.MovieService;
@@ -41,6 +42,11 @@ public class MovieController {
     @RequestMapping(method = RequestMethod.POST, value = "/filmActor")
     public void addFilmActor(@RequestBody FilmActor filmActor){
         movieService.addFilmActor(filmActor);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/category")
+    public void addCategory(@RequestBody Category category){
+        movieService.addCategory(category);
     }
 
 }

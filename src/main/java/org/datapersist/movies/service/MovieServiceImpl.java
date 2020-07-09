@@ -1,7 +1,9 @@
 package org.datapersist.movies.service;
 
+import org.datapersist.movies.model.Category;
 import org.datapersist.movies.model.FilmActor;
 import org.datapersist.movies.model.FilmCategory;
+import org.datapersist.movies.repository.CategoryRepository;
 import org.datapersist.movies.repository.FilmActorRepository;
 import org.datapersist.movies.repository.FilmCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService {
     private FilmCategoryRepository filmCategoryRepository;
     private FilmActorRepository filmActorRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public void setFilmCategoryRepository(FilmCategoryRepository filmCategoryRepository) {
@@ -21,6 +24,11 @@ public class MovieServiceImpl implements MovieService {
     @Autowired
     public void setFilmActorRepository(FilmActorRepository filmActorRepository) {
         this.filmActorRepository = filmActorRepository;
+    }
+
+    @Autowired
+    public void setCategoryRepository(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -46,5 +54,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public List<FilmActor> getFilmActorsFromFilmIdAndLastInitial(long filmId, String lastInitial) {
         return filmActorRepository.findByFilm_FilmIDAndActor_LastNameIsStartingWith(filmId, lastInitial);
+    }
+
+    @Override
+    public void addCategory(Category category) {
+        categoryRepository.save(category);
     }
 }
