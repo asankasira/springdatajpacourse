@@ -1,5 +1,7 @@
 package org.datapersist.movies.model;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -21,6 +23,7 @@ public class Film {
     private double replacementCost;
     @Column(name = "last_update", columnDefinition= "TIMESTAMP WITHOUT TIME ZONE")
     @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date lastUpdatedTime;
 
     public long getFilmID() {
