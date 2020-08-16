@@ -8,16 +8,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-//@EnableWebSecurity  uncomment this for customized security implementation
+@EnableWebSecurity  //uncomment this for customized security implementation
 public class SpringSecureConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("span")
-                .password("abc123")
+                .withUser("user1")
+                .password("jit")
                 .roles("USER")
                 .and()
-                .withUser("WebAdmin1")
+                .withUser("admin1")
                 .password("pass")
                 .roles("ADMIN");
     }
@@ -31,7 +31,7 @@ public class SpringSecureConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
          http.authorizeRequests()
                  .antMatchers("/lang").hasRole("ADMIN")
-                 .antMatchers("/filmCategory").hasRole("USER")
+                 .antMatchers("/category").hasAnyRole("USER", "ADMIN")
                  .antMatchers("/").permitAll()
                  .and().formLogin();
     }

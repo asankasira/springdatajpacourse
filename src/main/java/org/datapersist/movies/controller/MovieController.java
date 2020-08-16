@@ -19,6 +19,11 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    @RequestMapping("/category")
+    public List<Category> getAllFilmCategories(){
+        return movieService.getAllCategories();
+    }
+
     @RequestMapping("/filmCategory/{filmId}")
     public List<FilmCategory> getFilmCategories(@PathVariable Long filmId){
         return movieService.getFilmCategoriesFromFilmID(filmId);
